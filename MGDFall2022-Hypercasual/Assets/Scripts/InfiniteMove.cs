@@ -6,6 +6,7 @@ public class InfiniteMove : MonoBehaviour
 {
     private Vector3 startPos;
     private float repeatWidth;
+    private float divide = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class InfiniteMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < startPos.z - repeatWidth)
+        if (transform.position.z > startPos.z - repeatWidth)
         {
             transform.position = startPos;
         }
