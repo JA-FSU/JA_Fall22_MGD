@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class HealthParticleColor : MonoBehaviour
 {
-    private ParticleSystem particles;
+    private ParticleSystem ps;
+
     // Start is called before the first frame update
     void Start()
     {
-        Color newColor = new Color(1, 0, 0, 1);
+        ps = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        var main = ps.main;
+        main.startColor = new Color(1, 0, 0, 1);
     }
 }
