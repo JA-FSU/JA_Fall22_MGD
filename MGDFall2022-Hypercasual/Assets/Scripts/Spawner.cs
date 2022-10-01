@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     private GameManager gameManager;
     public Transform spawnManager;
     private float startDelay = 2;
-    private float spawnInterval = 1.2f;
+    private float spawnInterval = 1.14f;
 
     // Start is called before the first frame update
     void Start()
