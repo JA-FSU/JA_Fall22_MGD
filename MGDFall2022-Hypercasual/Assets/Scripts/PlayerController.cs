@@ -19,23 +19,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount == 1)
+        if (Input.touchCount > 0 && gameManager.isGameActive && !gameManager.isPaused)
         {
             Touch touch = Input.GetTouch(0);
             Vector2 touchPos = touch.position;
             if (touchPos.y <= Screen.height / 2)
             {
-                //if (touchPos.x)
-                Debug.Log(Input.touchCount);
-                Debug.Log(touchPos);
+                if (touchPos.x <= Screen.width / 2 && transform.position.x >= -4)
+                {
+                    Vector3 pos = transform.position;
+                    pos.x -= 4.0f;
+                    transform.position = pos;
+                    return;
+                }
+                else if (touchPos.x >= Screen.width / 2 && transform.position.x <= 4)
+                {
+                    Vector3 pos = transform.position;
+                    pos.x += 4.0f;
+                    transform.position = pos;
+                    return;
+                }
             }
-        }
-
-        if (Input.touchCount == 2)
-        {
-            Touch touch = Input.GetTouch(1);
-            Vector2 touchPos = touch.position;
-            Debug.Log(Input.touchCount);
         }
     }
 
@@ -54,9 +58,9 @@ public class PlayerController : MonoBehaviour
             audioSource.PlayOneShot(SE[1]);
         }
 
-        if (other.gameObject.CompareTag("Food"))
+        if (other.gameObject.CompareTag("Pancakes"))
         {
-            return;
+            audioSource.PlayOneShot(SE[2]);
         }
     }
 }

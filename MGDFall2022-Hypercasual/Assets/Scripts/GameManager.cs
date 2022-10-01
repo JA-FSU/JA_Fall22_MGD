@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Button pauseButton;
+    public Button startButton;
     public float score = 0.0f;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI titleText;
     public GameObject pauseText;
     public bool isGameActive;
     public bool isPaused;
@@ -16,11 +18,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isGameActive = true;
+        isGameActive = false;
         isPaused = false;
         score = 0;
         pauseText.SetActive(false);
+        titleText.gameObject.SetActive(true);
         pauseButton.onClick.AddListener(PauseGame);
+        startButton.onClick.AddListener(StartGame);
+        startButton.gameObject.SetActive(true);
+        pauseButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -62,5 +68,13 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game unpaused.");
             return;
         }
+    }
+
+    void StartGame()
+    {
+        titleText.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(false);
+        pauseButton.gameObject.SetActive(true);
+        isGameActive = true;
     }
 }
