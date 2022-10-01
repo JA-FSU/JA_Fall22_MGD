@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isGameActive == true)
+        if (isGameActive)
         {
             UpdateScore(Time.deltaTime);
         }
