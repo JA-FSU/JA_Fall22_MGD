@@ -2102,10 +2102,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseButton: {fileID: 871785520}
   startButton: {fileID: 1858535737}
-  score: 0
   scoreText: {fileID: 249832244}
   titleText: {fileID: 1171327088}
+  healthText: {fileID: 0}
   pauseText: {fileID: 1323607414}
+  score: 0
+  health: 5
   isGameActive: 0
   isPaused: 0
 --- !u!4 &923195848
@@ -4092,7 +4094,7 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1304.8, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
