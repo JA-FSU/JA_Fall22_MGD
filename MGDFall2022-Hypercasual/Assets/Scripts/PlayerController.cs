@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             Vector2 touchPos = touch.position;
-            if (touchPos.y <= 1700)
+            if (touchPos.y <= Screen.height / 2)
             {
                 //if (touchPos.x)
                 Debug.Log(Input.touchCount);
@@ -41,6 +41,17 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Pancakes"))
+        {
+            Destroy(other.gameObject);
+            gameManager.UpdateScore(10.0f);
+        }
+
+        if (other.gameObject.CompareTag("Food"))
+        {
+            return;
         }
     }
 }

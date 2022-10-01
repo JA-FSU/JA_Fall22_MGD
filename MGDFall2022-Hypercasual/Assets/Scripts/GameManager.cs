@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Button pauseButton;
-    private float score = 0.0f;
+    public float score = 0.0f;
     public TextMeshProUGUI scoreText;
     public GameObject pauseText;
     public bool isGameActive;
@@ -28,14 +28,19 @@ public class GameManager : MonoBehaviour
     {
         if (isGameActive == true)
         {
-            score += Time.deltaTime;
-            scoreText.text = "" + Mathf.Round(score);
+            UpdateScore(Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
+    }
+
+    public void UpdateScore(float scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = "" + Mathf.Round(score);
     }
 
     void PauseGame()
