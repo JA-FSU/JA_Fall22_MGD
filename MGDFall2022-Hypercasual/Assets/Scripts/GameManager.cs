@@ -68,6 +68,10 @@ public class GameManager : MonoBehaviour
             health = 0;
             GameOver();
         }
+        if (health >5)
+        {
+            health = 5;
+        }
         healthText.text = "" + health;
     }
 

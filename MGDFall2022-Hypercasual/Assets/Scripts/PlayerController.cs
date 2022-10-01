@@ -61,9 +61,20 @@ public class PlayerController : MonoBehaviour
             audioSource.PlayOneShot(SE[1]);
         }
 
+        if (other.gameObject.CompareTag("Powerup"))
+        {
+            Destroy(other.gameObject);
+            audioSource.PlayOneShot(SE[2]);
+            if (gameManager.health < 5)
+            {
+                int subtractHealth = other.gameObject.GetComponent<HealthToTake>().healthToTake;
+                gameManager.UpdateHealth(subtractHealth);
+            }
+        }
+
         if (other.gameObject.CompareTag("Pancakes"))
         {
-            audioSource.PlayOneShot(SE[2]);
+            audioSource.PlayOneShot(SE[3]);
         }
     }
 }
