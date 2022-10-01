@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public Button pauseButton;
     public Button startButton;
+    public Button quitButton;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI healthText;
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     public int highScore = 0;
     public bool isGameActive;
     public bool isPaused;
+    private Spawner spawnManagerScript;
+    private GameObject Player;
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +35,14 @@ public class GameManager : MonoBehaviour
         highScoreText.gameObject.SetActive(true);
         pauseButton.onClick.AddListener(PauseGame);
         startButton.onClick.AddListener(StartGame);
+        quitButton.onClick.AddListener(CloseGame);
         startButton.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(false);
+        quitButton.gameObject.SetActive(true);
         highScore = PlayerPrefs.GetInt("HighScore");
         highScoreText.text = "Best: " + highScore;
+        spawnManagerScript = GameObject.Find("SpawnManager").GetComponent<Spawner>();
+        Player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -44,11 +51,6 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             UpdateScore(Time.deltaTime);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
         }
     }
 
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
     public void UpdateHealth(int HealthToSubtract)
     {
         health -= HealthToSubtract;
-        if (health < 0)
+        if (health <= 0)
         {
             health = 0;
             GameOver();
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
             isPaused = true;
             Debug.Log("Game paused.");
             pauseText.SetActive(true);
+            quitButton.gameObject.SetActive(true);
             Time.timeScale = 0.0f;
             return;
         }
@@ -85,6 +88,7 @@ public class GameManager : MonoBehaviour
             isPaused = false;
             Time.timeScale = 1.0f;
             pauseText.SetActive(false);
+            quitButton.gameObject.SetActive(false);
             Debug.Log("Game unpaused.");
             return;
         }
@@ -92,13 +96,30 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
+        Time.timeScale = 1.0f;
+        health = 5;
+        score = 0;
         titleText.gameObject.SetActive(false);
         startButton.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(true);
         healthText.gameObject.SetActive(true);
         highScoreText.gameObject.SetActive(false);
-        scoreText.text = "" + health;
+        scoreText.text = "" + score;
+        healthText.text = "" + health;
+
+        // Reset Player position
+        Vector3 playerPos = Player.transform.position;
+        playerPos.x = 0.0f;
+        Player.transform.position = playerPos;
+
+        //Destroy all spawned objects
+        foreach (Transform child in spawnManagerScript.spawnManager.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
         isGameActive = true;
     }
 
@@ -106,14 +127,22 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         isPaused = false;
-        healthText.gameObject.SetActive(false);
+        pauseButton.gameObject.SetActive(false);
+        quitButton.gameObject.SetActive(true);
+        startButton.gameObject.SetActive(true);
         highScoreText.gameObject.SetActive(true);
         if (score > highScore)
         {
             PlayerPrefs.SetInt("HighScore", (int)Mathf.Round(score));
             highScore = PlayerPrefs.GetInt("HighScore");
         }
-        scoreText.gameObject.SetActive(false);
         highScoreText.text = "Best: " + highScore;
+        Time.timeScale = 0.0f;
+    }
+
+    void CloseGame()
+    {
+        Debug.Log("Quitting...");
+        Application.Quit();
     }
 }

@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     public GameObject[] spawnerPrefabs;
     public float[] spawnLocations;
     private GameManager gameManager;
+    public Transform spawnManager;
     private float startDelay = 2;
     private float spawnInterval = 2.0f;
 
@@ -14,6 +15,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<Transform>();
         InvokeRepeating("SpawnRandom", startDelay, spawnInterval);
     }
 
@@ -32,7 +34,8 @@ public class Spawner : MonoBehaviour
         
         if (gameManager.isGameActive && !gameManager.isPaused)
         {
-            Instantiate(spawnerPrefabs[spawnerIndex], locationIndex, spawnerPrefabs[spawnerIndex].transform.rotation);
+            GameObject spawnable = Instantiate(spawnerPrefabs[spawnerIndex], locationIndex, spawnerPrefabs[spawnerIndex].transform.rotation);
+            spawnable.transform.parent = spawnManager;
         }
     }
 }
