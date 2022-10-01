@@ -1873,7 +1873,7 @@ MonoBehaviour:
   SE:
   - {fileID: 8300000, guid: 8e4cc53aca7e6724f9645929096acf9b, type: 3}
   - {fileID: 8300000, guid: 7c2c9299d85638745b9f15cd526a99e0, type: 3}
-  - {fileID: 8300000, guid: 91c3740489fb21340a794f9827c3248f, type: 3}
+  - {fileID: 8300000, guid: 7c2c9299d85638745b9f15cd526a99e0, type: 3}
 --- !u!82 &875618738
 AudioSource:
   m_ObjectHideFlags: 0

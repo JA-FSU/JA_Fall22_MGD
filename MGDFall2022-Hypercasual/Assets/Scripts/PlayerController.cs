@@ -23,16 +23,16 @@ public class PlayerController : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             Vector2 touchPos = touch.position;
-            if (touchPos.y <= Screen.height / 2)
+            if (touchPos.y <= Screen.height / 2 && touch.phase == TouchPhase.Began)
             {
-                if (touchPos.x <= Screen.width / 2 && transform.position.x >= -4)
+                if (touchPos.x <= Screen.width / 2 && transform.position.x > -4)
                 {
                     Vector3 pos = transform.position;
                     pos.x -= 4.0f;
                     transform.position = pos;
                     return;
                 }
-                else if (touchPos.x >= Screen.width / 2 && transform.position.x <= 4)
+                else if (touchPos.x >= Screen.width / 2 && transform.position.x < 4)
                 {
                     Vector3 pos = transform.position;
                     pos.x += 4.0f;
