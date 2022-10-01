@@ -8,10 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public Button pauseButton;
     public Button startButton;
-    public float score = 0.0f;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI titleText;
     public GameObject pauseText;
+    public float score = 0.0f;
+    public int health = 5;
     public bool isGameActive;
     public bool isPaused;
 
