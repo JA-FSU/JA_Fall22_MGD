@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] spawnerPrefabs;
-    public int[] spawnLocations;
+    public float[] spawnLocations;
     private GameManager gameManager;
     private float startDelay = 2;
     private float spawnInterval = 2.0f;
@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
     void SpawnRandom()
     {
         int spawnerIndex = Random.Range(0, spawnerPrefabs.Length);
-        float random = Random.Range(0, spawnLocations.Length);
+        int random = Random.Range(0, spawnLocations.Length);
         float randomChoose = spawnLocations[random];
         Vector3 locationIndex = new Vector3(randomChoose, 2.53f, 300.0f);
         
