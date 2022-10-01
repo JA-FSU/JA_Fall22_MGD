@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             audioSource.PlayOneShot(SE[0]);
+            int subtractHealth = other.gameObject.GetComponent<HealthToTake>().healthToTake;
+            gameManager.UpdateHealth(subtractHealth);
 
         }
 

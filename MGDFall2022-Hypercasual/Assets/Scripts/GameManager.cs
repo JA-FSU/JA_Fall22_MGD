@@ -11,9 +11,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI highScoreText;
     public GameObject pauseText;
     public float score = 0.0f;
     public int health = 5;
+    public int highScore = 0;
     public bool isGameActive;
     public bool isPaused;
 
@@ -27,10 +29,13 @@ public class GameManager : MonoBehaviour
         scoreText.gameObject.SetActive(false);
         healthText.gameObject.SetActive(false);
         titleText.gameObject.SetActive(true);
+        highScoreText.gameObject.SetActive(true);
         pauseButton.onClick.AddListener(PauseGame);
         startButton.onClick.AddListener(StartGame);
         startButton.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(false);
+        highScore = PlayerPrefs.GetInt("HighScore");
+        highScoreText.text = "Best: " + highScore;
     }
 
     // Update is called once per frame
@@ -51,6 +56,17 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "" + Mathf.Round(score);
+    }
+
+    public void UpdateHealth(int HealthToSubtract)
+    {
+        health -= HealthToSubtract;
+        if (health < 0)
+        {
+            health = 0;
+            GameOver();
+        }
+        healthText.text = "" + health;
     }
 
     void PauseGame()
@@ -81,13 +97,23 @@ public class GameManager : MonoBehaviour
         pauseButton.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
         healthText.gameObject.SetActive(true);
+        highScoreText.gameObject.SetActive(false);
         scoreText.text = "" + health;
         isGameActive = true;
     }
 
-    void UpdateHealth(int HealthToSubtract)
+    void GameOver()
     {
-        health -= HealthToSubtract;
-
+        isGameActive = false;
+        isPaused = false;
+        healthText.gameObject.SetActive(false);
+        highScoreText.gameObject.SetActive(true);
+        if (score > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", (int)Mathf.Round(score));
+            highScore = PlayerPrefs.GetInt("HighScore");
+        }
+        scoreText.gameObject.SetActive(false);
+        highScoreText.text = "Best: " + highScore;
     }
 }
