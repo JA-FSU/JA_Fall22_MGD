@@ -145,4 +145,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("Quitting...");
         Application.Quit();
     }
+
+    static void Quit()
+    {
+        Debug.Log("Quitting the Player");
+    }
+
+    [RuntimeInitializeOnLoadMethod]
+    static void RunOnStart()
+    {
+        Application.quitting += Quit;
+    }
 }
