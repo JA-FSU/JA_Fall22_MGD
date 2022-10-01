@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Button startButton;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI titleText;
+    public TextMeshProUGUI healthText;
     public GameObject pauseText;
     public float score = 0.0f;
     public int health = 5;
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         score = 0;
         pauseText.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        healthText.gameObject.SetActive(false);
         titleText.gameObject.SetActive(true);
         pauseButton.onClick.AddListener(PauseGame);
         startButton.onClick.AddListener(StartGame);
@@ -76,6 +79,15 @@ public class GameManager : MonoBehaviour
         titleText.gameObject.SetActive(false);
         startButton.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
+        healthText.gameObject.SetActive(true);
+        scoreText.text = "" + health;
         isGameActive = true;
+    }
+
+    void UpdateHealth(int HealthToSubtract)
+    {
+        health -= HealthToSubtract;
+
     }
 }

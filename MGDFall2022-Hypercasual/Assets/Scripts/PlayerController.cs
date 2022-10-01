@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             audioSource.PlayOneShot(SE[0]);
+
         }
 
         if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Pancakes"))

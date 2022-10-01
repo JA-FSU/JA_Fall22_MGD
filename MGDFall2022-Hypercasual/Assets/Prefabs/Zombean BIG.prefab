@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6174589191668980441}
   - component: {fileID: 6174589191668980442}
   - component: {fileID: 3126037528275816696}
+  - component: {fileID: 2130895152588669839}
   - component: {fileID: 4680225696255410453}
   m_Layer: 0
   m_Name: Zombean BIG
@@ -116,6 +117,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2130895152588669839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174589191668980443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2243ce89525d741b44871fa434eb42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4680225696255410453
 MonoBehaviour:
   m_ObjectHideFlags: 0
