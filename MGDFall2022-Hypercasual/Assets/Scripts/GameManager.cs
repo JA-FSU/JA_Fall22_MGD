@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         isPaused = false;
+        Player.GetComponent<PlayerController>().audioSource.PlayOneShot(Player.GetComponent<PlayerController>().SE[3]);
         pauseButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(true);
         startButton.gameObject.SetActive(true);

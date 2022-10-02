@@ -2109,10 +2109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c38ba1e9bce4534aa415682511698a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   SE:
   - {fileID: 8300000, guid: 8e4cc53aca7e6724f9645929096acf9b, type: 3}
   - {fileID: 8300000, guid: 7c2c9299d85638745b9f15cd526a99e0, type: 3}
   - {fileID: 8300000, guid: 3f9832436a5e18a4582ca54c337d1e3e, type: 3}
+  - {fileID: 8300000, guid: 7a9e91c09bf7a8742bfea453826f04b0, type: 3}
   - {fileID: 8300000, guid: e38a47d0dfef093478b33b6db814d80d, type: 3}
 --- !u!82 &875618738
 AudioSource:

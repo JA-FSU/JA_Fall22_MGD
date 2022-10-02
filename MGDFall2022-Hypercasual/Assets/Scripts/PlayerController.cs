@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private GameManager gameManager;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip[] SE;
 
     // Start is called before the first frame update
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Pancakes"))
         {
-            audioSource.PlayOneShot(SE[3]);
+            audioSource.PlayOneShot(SE[4]);
         }
     }
 }
