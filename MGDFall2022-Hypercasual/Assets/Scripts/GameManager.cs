@@ -28,17 +28,21 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         isPaused = false;
         score = 0;
+
         pauseText.SetActive(false);
         scoreText.gameObject.SetActive(false);
         healthText.gameObject.SetActive(false);
         titleText.gameObject.SetActive(true);
         highScoreText.gameObject.SetActive(true);
+
         pauseButton.onClick.AddListener(PauseGame);
         startButton.onClick.AddListener(StartGame);
         quitButton.onClick.AddListener(CloseGame);
+
         startButton.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(true);
+
         highScore = PlayerPrefs.GetInt("HighScore");
         highScoreText.text = "Best: " + highScore;
         spawnManagerScript = GameObject.Find("SpawnManager").GetComponent<Spawner>();
@@ -149,16 +153,5 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Quitting...");
         Application.Quit();
-    }
-
-    static void Quit()
-    {
-        Debug.Log("Quitting the Player");
-    }
-
-    [RuntimeInitializeOnLoadMethod]
-    static void RunOnStart()
-    {
-        Application.quitting += Quit;
     }
 }
