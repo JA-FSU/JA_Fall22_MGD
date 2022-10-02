@@ -16,6 +16,6 @@ public class HealthParticleColor : MonoBehaviour
     void Update()
     {
         var main = ps.main;
-        main.startColor = new Color(1, 0, 0, 1);
+        main.startColor = new Color(95, 45, 100, 30);
     }
 }

@@ -11,18 +11,25 @@ public class Spawner : MonoBehaviour
     private float startDelay = 2;
     private float spawnInterval = 1.14f;
 
+    //private IEnumerator spawnSystem;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         spawnManager = GameObject.Find("SpawnManager").GetComponent<Transform>();
         InvokeRepeating("SpawnRandom", startDelay, spawnInterval);
+        // spawnSystem = SpawnRandom()''
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //if (gameManager.score > 500)
+        //{
+            //spawnInterval = 0.8f;
+            //InvokeRepeating("SpawnRandom", startDelay, spawnInterval);
+        //}
     }
 
     void SpawnRandom()
