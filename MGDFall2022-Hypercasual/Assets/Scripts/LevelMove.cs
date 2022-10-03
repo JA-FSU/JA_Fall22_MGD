@@ -27,10 +27,15 @@ public class LevelMove : MonoBehaviour
         {
             speed += 5.0f;
             benchmarkScore += 100.0f;
-            if (speed >= startSpeed * 2.0f)
+            if (speed >= startSpeed * 4.0f)
             {
                 speedRaisedMax = true;
             }
+        }
+
+        if (gameManager.gameOver)
+        {
+            speed = startSpeed;
         }
     }
 }

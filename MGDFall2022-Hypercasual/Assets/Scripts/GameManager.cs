@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int highScore = 0;
     public bool isGameActive;
     public bool isPaused;
+    public bool gameOver;
     private Spawner spawnManagerScript;
     private GameObject Player;
 
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         isPaused = false;
+        gameOver = true;
         score = 0;
 
         pauseText.SetActive(false);
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
+        gameOver = false;
         Time.timeScale = 1.0f;
         health = 5;
         score = 0;
@@ -135,6 +138,7 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         isPaused = false;
+        gameOver = true;
         Player.GetComponent<PlayerController>().audioSource.PlayOneShot(Player.GetComponent<PlayerController>().SE[3]);
         pauseButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(true);
