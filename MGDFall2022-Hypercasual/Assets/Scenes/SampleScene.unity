@@ -2324,6 +2324,7 @@ MonoBehaviour:
   highScore: 0
   isGameActive: 0
   isPaused: 0
+  gameOver: 0
 --- !u!4 &923195848
 Transform:
   m_ObjectHideFlags: 0
@@ -2472,13 +2473,14 @@ MonoBehaviour:
   - {fileID: 1996815852551487035, guid: 11bccc60726374a918b5c73120d47ab3, type: 3}
   - {fileID: 1231404981057759891, guid: 34ea11ed243c477489e54390b509b637, type: 3}
   - {fileID: 1231404981057759891, guid: 34ea11ed243c477489e54390b509b637, type: 3}
-  - {fileID: 1231404981057759891, guid: 34ea11ed243c477489e54390b509b637, type: 3}
   - {fileID: 5817859361576445215, guid: 4686065cdbed7bf4f99ae262ab9c3947, type: 3}
   spawnLocations:
   - -4
   - 0
   - 4
   spawnManager: {fileID: 0}
+  spawnInterval: 1.14
+  spawnStarted: 0
 --- !u!4 &957679780
 Transform:
   m_ObjectHideFlags: 0
